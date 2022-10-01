@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QtWidgets>
-//#include "ui_qselect_version.h"
 
 class QSelect_Version : public QWidget
 {
@@ -24,7 +23,6 @@ public:
     QString getVersion();
 
 private:
-    //Ui::QSelect_VersionClass ui;
     QString prefix;
     QString delimiter;
 

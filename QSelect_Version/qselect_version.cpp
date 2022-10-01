@@ -5,8 +5,6 @@
 QSelect_Version::QSelect_Version(QWidget *parent, QString ndelimiter, QString nprefix)
     : QWidget(parent), delimiter{ ndelimiter }, prefix{ nprefix }
 {
-    //ui.setupUi(this);
-
     QRegularExpression vrgx("\\d{9}");
 
     major = new QLineEdit(this);
