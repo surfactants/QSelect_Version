@@ -53,32 +53,37 @@ void QSelect_Version::setPrefix(QString nprefix)
     sep_0->setText(prefix);
 }
 
-void QSelect_Version::load(int ma, int mi, int pa)
+void QSelect_Version::load(int maj, int min, int pat)
 {
     major->clear();
-    major->setText(QString::number(ma));
+    major->setText(QString::number(maj));
     minor->clear();
-    minor->setText(QString::number(mi));
+    minor->setText(QString::number(min));
     patch->clear();
-    patch->setText(QString::number(pa));
+    patch->setText(QString::number(pat));
 }
 
-int QSelect_Version::getMajor()
+void  QSelect_Version::load(QString maj, QString min, QString pat)
 {
-    return major->text().toInt();
+    load(maj.toInt(), min.toInt(), pat.toInt());
 }
 
-int QSelect_Version::getMinor()
+QString QSelect_Version::getMajor()
 {
-    return minor->text().toInt();
+    return major->text();
 }
 
-int QSelect_Version::getPatch()
+QString QSelect_Version::getMinor()
 {
-    return patch->text().toInt();
+    return minor->text();
+}
+
+QString QSelect_Version::getPatch()
+{
+    return patch->text();
 }
 
 QString QSelect_Version::getVersion()
 {
-    return QString(major->text() + delimiter + minor->text() + delimiter + patch->text());
+    return QString(prefix + getMajor() + delimiter + getMinor() + delimiter + getPatch());
 }

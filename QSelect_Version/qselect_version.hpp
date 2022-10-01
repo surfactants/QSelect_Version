@@ -14,11 +14,12 @@ public:
     void setDelimiter(QString ndelimiter);
     void setPrefix(QString nprefix);
 
-    void load(int ma, int mi, int pa);
+    void load(int maj, int min, int pat);
+    void load(QString maj, QString min, QString pat);
 
-    int getMajor();
-    int getMinor();
-    int getPatch();
+    QString getMajor();
+    QString getMinor();
+    QString getPatch();
 
     QString getVersion();
 
