@@ -6,7 +6,7 @@ all parameters are optional.
   QWidget* parent = new QWidget; //defaults to nullptr
   QString delimiter = ","; //defaults to "."
   QString prefix = "ver."; //defaults to "v"
-  QSelect_Version versionSelect(parent, first_year, last_year);
+  QSelect_Version versionSelect(parent, delimiter, prefix);
   versionSelect.show();
 ```
 
