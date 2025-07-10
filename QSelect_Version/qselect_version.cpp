@@ -1,20 +1,23 @@
 #include "qselect_version.hpp"
+
 #include <QRegularExpressionValidator>
 #include <QRegularExpression>
 
-QSelect_Version::QSelect_Version(QWidget *parent, QString ndelimiter, QString nprefix)
+QSelect_Version::QSelect_Version(QWidget *parent,
+                                const QString& ndelimiter,
+                                const QString& nprefix)
     : QWidget(parent), delimiter{ ndelimiter }, prefix{ nprefix }
 {
     QRegularExpression vrgx("\\d{9}");
 
     major = new QLineEdit(this);
-        major->setValidator(new QRegularExpressionValidator(vrgx, major));
+    major->setValidator(new QRegularExpressionValidator(vrgx, major));
 
     minor = new QLineEdit(this);
-        minor->setValidator(new QRegularExpressionValidator(vrgx, minor));
+    minor->setValidator(new QRegularExpressionValidator(vrgx, minor));
 
     patch = new QLineEdit(this);
-        patch->setValidator(new QRegularExpressionValidator(vrgx, patch));
+    patch->setValidator(new QRegularExpressionValidator(vrgx, patch));
 
     sep_0 = new QLabel(prefix, this);
     sep_1 = new QLabel(delimiter, this);
@@ -36,6 +39,9 @@ QSelect_Version::~QSelect_Version()
     delete major;
     delete minor;
     delete patch;
+    delete sep_0;
+    delete sep_1;
+    delete sep_2;
 }
 
 void QSelect_Version::setDelimiter(QString ndelimiter)
@@ -55,8 +61,10 @@ void QSelect_Version::load(int maj, int min, int pat)
 {
     major->clear();
     major->setText(QString::number(maj));
+
     minor->clear();
     minor->setText(QString::number(min));
+
     patch->clear();
     patch->setText(QString::number(pat));
 }
@@ -83,5 +91,7 @@ QString QSelect_Version::getPatch()
 
 QString QSelect_Version::getVersion()
 {
-    return QString(prefix + getMajor() + delimiter + getMinor() + delimiter + getPatch());
+    return (prefix + getMajor() +
+            delimiter + getMinor() +
+            delimiter + getPatch());
 }
