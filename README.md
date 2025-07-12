@@ -3,11 +3,9 @@ semantic version selection widget. version strings are digit-only, and limited t
 ## construction
 all parameters are optional.
 ```
-  QWidget* parent = new QWidget; //defaults to nullptr
-  QString delimiter = ","; //defaults to "."
-  QString prefix = "ver."; //defaults to "v"
-  QSelect_Version versionSelect(parent, delimiter, prefix);
-  versionSelect.show();
+   QSelect_Version(QWidget *parent = nullptr,
+                    QString ndelimiter = ".",
+                    QString nprefix = "v");
 ```
 
 ## changing the delimiter and prefix
@@ -26,7 +24,7 @@ all parameters are optional.
 ```
 
 ## setting data
-a QString overload is provided
+a QString overload is provided:
 ```
   void load(int maj, int min, int pat);
   void load(QString maj, QString min, QString pat);
